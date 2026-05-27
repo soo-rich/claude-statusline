@@ -22,7 +22,7 @@ A custom status line for [Claude Code](https://claude.ai/code) showing folder, g
 **Requirements:** `bash`, `python3`, `curl` (standard on macOS/Linux)
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/videv/claude-statusline/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/videvjs/claude-statusline/main/install.sh | bash
 ```
 
 That's it. Restart Claude Code.
