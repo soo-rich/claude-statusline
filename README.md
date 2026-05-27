@@ -27,6 +27,8 @@ curl -fsSL https://raw.githubusercontent.com/videvjs/claude-statusline/main/inst
 
 That's it. Restart Claude Code.
 
+> **macOS — Xcode Command Line Tools:** If this is your first time using `git` on this machine, macOS will interrupt the install and ask you to install Xcode Command Line Tools. Accept it, wait for the install to complete, then **run the curl command again**. The second run will complete normally.
+
 ## What the installer does
 
 1. Downloads `statusline-command.sh` to `~/.claude/`
