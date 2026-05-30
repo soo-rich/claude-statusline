@@ -2,7 +2,17 @@
 
 A custom status line for [Claude Code](https://claude.ai/code) showing folder, git branch, model, context usage, and rate limits — all with color-coded progress bars.
 
-![status line preview](https://i.imgur.com/placeholder.png)
+## Install
+
+**Requirements:** `bash`, `python3`, `curl` (standard on macOS/Linux)
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/videvjs/claude-statusline/main/install.sh | bash
+```
+
+That's it. Restart Claude Code.
+
+> **macOS — Xcode Command Line Tools:** If this is your first time using `git` on this machine, macOS will interrupt the install and ask you to install Xcode Command Line Tools. Accept it, wait for the install to complete, then **run the curl command again**. The second run will complete normally.
 
 ## What it shows
 
@@ -17,30 +27,6 @@ A custom status line for [Claude Code](https://claude.ai/code) showing folder, g
 | `5h` | 5-hour rate limit with countdown to reset |
 | `7d` | 7-day rate limit (only shown above 30%) |
 
-## Install
-
-**Requirements:** `bash`, `python3`, `curl` (standard on macOS/Linux)
-
-```bash
-curl -fsSL https://raw.githubusercontent.com/videvjs/claude-statusline/main/install.sh | bash
-```
-
-That's it. Restart Claude Code.
-
-> **macOS — Xcode Command Line Tools:** If this is your first time using `git` on this machine, macOS will interrupt the install and ask you to install Xcode Command Line Tools. Accept it, wait for the install to complete, then **run the curl command again**. The second run will complete normally.
-
-## What the installer does
-
-1. Downloads `statusline-command.sh` to `~/.claude/`
-2. Patches `~/.claude/settings.json` to enable the status line
-3. Creates a `settings.json.bak` backup before touching anything
-
 ## Uninstall
 
 Remove the `statusLine` block from `~/.claude/settings.json` and delete `~/.claude/statusline-command.sh`.
-
-## Requirements
-
-- Claude Code
-- `bash` + `python3` (already on macOS, standard on most Linux)
-- A terminal that supports 24-bit color (most modern terminals do)
