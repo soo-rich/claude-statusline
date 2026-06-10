@@ -24,7 +24,7 @@ The macOS/Linux installer above does not run on Windows. Use the PowerShell inst
 
 ```powershell
 # One-liner (no clone):
-irm https://raw.githubusercontent.com/soo-rich/claude-statusline/main/install.ps1 | iex
+irm https://raw.githubusercontent.com/videvjs/claude-statusline/main/install.ps1 | iex
 ```
 
 ```powershell

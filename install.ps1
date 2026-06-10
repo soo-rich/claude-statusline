@@ -28,11 +28,11 @@
 
 .EXAMPLE
   # One-liner (no clone):
-  irm https://raw.githubusercontent.com/soo-rich/claude-statusline/main/install.ps1 | iex
+  irm https://raw.githubusercontent.com/videvjs/claude-statusline/main/install.ps1 | iex
 #>
 [CmdletBinding()]
 param(
-  [string]$RepoRaw = "https://raw.githubusercontent.com/soo-rich/claude-statusline/main",
+  [string]$RepoRaw = "https://raw.githubusercontent.com/videvjs/claude-statusline/main",
   [string]$ClaudeDir = (Join-Path $HOME ".claude")
 )
 
