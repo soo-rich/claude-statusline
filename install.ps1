@@ -37,6 +37,10 @@ param(
 )
 
 $ErrorActionPreference = "Stop"
+
+# Windows PowerShell 5.1 negotiates TLS 1.0 by default; GitHub requires 1.2+.
+try { [Net.ServicePointManager]::SecurityProtocol = [Net.ServicePointManager]::SecurityProtocol -bor [Net.SecurityProtocolType]::Tls12 } catch {}
+
 $ScriptName = "statusline-command.sh"
 $Target     = Join-Path $ClaudeDir $ScriptName
 $Settings   = Join-Path $ClaudeDir "settings.json"
@@ -71,7 +75,10 @@ if (-not (Test-Path $ClaudeDir)) { New-Item -ItemType Directory -Path $ClaudeDir
 # 2. Obtain the script (prefer the local copy next to this installer).
 $localScript = if ($PSScriptRoot) { Join-Path $PSScriptRoot $ScriptName } else { $null }
 if ($localScript -and (Test-Path $localScript)) {
-  $content = Get-Content -Raw -Path $localScript
+  # ReadAllText auto-detects BOM and defaults to UTF-8 on every PowerShell version.
+  # (Get-Content -Raw uses the ANSI codepage on Windows PowerShell 5.1 and would
+  # corrupt the box-drawing characters in the bar.)
+  $content = [System.IO.File]::ReadAllText($localScript)
   Write-Info "Using local $ScriptName"
 } else {
   Write-Info "Downloading $ScriptName from $RepoRaw"
@@ -86,7 +93,7 @@ Write-Ok "Script -> $Target"
 # 4. Patch settings.json (back up first; preserve existing keys).
 if (Test-Path $Settings) {
   try {
-    $json = Get-Content -Raw -Path $Settings | ConvertFrom-Json
+    $json = [System.IO.File]::ReadAllText($Settings) | ConvertFrom-Json
   } catch {
     Write-Host "X   settings.json is invalid JSON - fix it manually then re-run." -ForegroundColor Red
     exit 1
