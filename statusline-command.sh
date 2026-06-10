@@ -88,7 +88,7 @@ if [ -n "$five_h_pct" ]; then
       fi
     fi
   fi
-  parts+=("· 5h ${color}[${bar}] ${five_int}%${reset}${countdown}")
+  parts+=("5h ${color}[${bar}] ${five_int}%${reset}${countdown}")
 fi
 if [ -n "$seven_d_pct" ]; then
   seven_int=$(printf "%.0f" "$seven_d_pct")
@@ -103,4 +103,11 @@ if [ -n "$seven_d_pct" ]; then
   fi
 fi
 
-(IFS=" | "; printf '%b' "${parts[*]}")
+# Join with " | ". ${parts[*]} can't be used here: it joins on the first IFS
+# character only (a space), which is why earlier output had no separators.
+out=""
+for p in "${parts[@]}"; do
+  [ -n "$out" ] && out+=" | "
+  out+="$p"
+done
+printf '%b' "$out"
