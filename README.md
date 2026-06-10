@@ -16,7 +16,9 @@ That's it. Restart Claude Code.
 
 ### Windows
 
-**Requirements:** [Git for Windows](https://git-scm.com/download/win) (provides Git Bash), `python3`, `git`.
+**Requirements:** [Git for Windows](https://git-scm.com/download/win) (provides Git Bash), `python3`, `git`, and **PowerShell 5.1 or newer**.
+
+> **Which PowerShell?** The installer is tested on both **Windows PowerShell 5.1** (the built-in `powershell` on Windows 10/11 — no install needed) and **PowerShell 7+** ([`pwsh`](https://aka.ms/powershell)). Use whichever you have; `pwsh` is recommended when available (faster, fewer legacy quirks). The commands below work verbatim in both — for the local-clone command you can substitute `pwsh` for `powershell`.
 
 The macOS/Linux installer above does not run on Windows. Use the PowerShell installer instead:
 
